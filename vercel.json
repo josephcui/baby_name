@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "installCommand": "echo 'No dependencies to install.'",
-  "buildCommand": "rm -rf dist && mkdir -p dist && cp index.html style.css script.js data.js dist/",
-  "outputDirectory": "dist"
+  "buildCommand": "echo 'Static site - no build step required.'",
+  "outputDirectory": "."
 }

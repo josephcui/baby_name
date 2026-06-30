@@ -1,26 +1,113 @@
-
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>宝宝起名网站</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="智能宝宝起名向导：结合寓意、五行、声调与诗词典籍，为宝宝生成有文化底蕴的好名字。" />
+  <title>宝宝起名向导 · 智能取名</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>宝宝起名向导</h1>
-        <p>根据2023年流行趋势为您的宝宝起一个美名！</p>
-        <form id="nameForm">
-            <input type="text" id="surname" placeholder="请输入姓氏" required>
-            <select id="gender">
-                <option value="male">男孩</option>
-                <option value="female">女孩</option>
-            </select>
-            <button type="submit">生成名字</button>
-        </form>
-        <div id="result"></div>
+  <div class="bg-decoration" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+  </div>
+
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-mark">名</span>
+      <div class="logo-text">
+        <strong>宝宝起名向导</strong>
+        <small>寓意 · 五行 · 声韵 · 诗书</small>
+      </div>
     </div>
-    <script src="script.js"></script>
+  </header>
+
+  <main class="layout">
+    <section class="hero">
+      <h1>为宝宝取一个<span class="grad">有故事的好名字</span></h1>
+      <p class="subtitle">告诉我们你的期望，算法会结合字义寓意、五行调和、声调韵律与古籍出处，挑选最合适的名字。</p>
+    </section>
+
+    <section class="panel form-panel">
+      <form id="nameForm" autocomplete="off">
+        <div class="field-row">
+          <label class="field">
+            <span class="field-label">姓氏</span>
+            <input type="text" id="surname" maxlength="2" placeholder="如：李" required />
+          </label>
+          <label class="field">
+            <span class="field-label">性别</span>
+            <select id="gender">
+              <option value="male">男孩</option>
+              <option value="female">女孩</option>
+              <option value="neutral">不限</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">名字字数</span>
+            <select id="length">
+              <option value="2">双字名</option>
+              <option value="1">单字名</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">五行偏好</span>
+            <select id="element">
+              <option value="">不限</option>
+              <option value="metal">金</option>
+              <option value="wood">木</option>
+              <option value="water">水</option>
+              <option value="fire">火</option>
+              <option value="earth">土</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="field">
+          <span class="field-label">期望寓意 <em>（可多选）</em></span>
+          <div class="tag-group" id="tagGroup">
+            <label class="tag"><input type="checkbox" name="tag" value="wisdom" /><span>智慧</span></label>
+            <label class="tag"><input type="checkbox" name="tag" value="virtue" /><span>品德</span></label>
+            <label class="tag"><input type="checkbox" name="tag" value="health" /><span>健康平安</span></label>
+            <label class="tag"><input type="checkbox" name="tag" value="beauty" /><span>容貌气质</span></label>
+            <label class="tag"><input type="checkbox" name="tag" value="elegant" /><span>文雅</span></label>
+            <label class="tag"><input type="checkbox" name="tag" value="ambition" /><span>志向抱负</span></label>
+            <label class="tag"><input type="checkbox" name="tag" value="nature" /><span>自然意象</span></label>
+            <label class="tag"><input type="checkbox" name="tag" value="strong" /><span>坚强独立</span></label>
+            <label class="tag"><input type="checkbox" name="tag" value="fortune" /><span>福气吉祥</span></label>
+            <label class="tag"><input type="checkbox" name="tag" value="gentle" /><span>温柔</span></label>
+            <label class="tag"><input type="checkbox" name="tag" value="bright" /><span>阳光开朗</span></label>
+          </div>
+        </div>
+
+        <label class="field">
+          <span class="field-label">避免用字 <em>（可选，连续输入）</em></span>
+          <input type="text" id="avoid" placeholder="如：辈分用字、长辈名讳等" />
+        </label>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">✨ 生成好名字</button>
+          <button type="button" id="regenerate" class="btn btn-ghost">换一批</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="favSection" hidden>
+      <h2 class="section-title">我的收藏</h2>
+      <div id="favorites" class="fav-list"></div>
+    </section>
+
+    <section id="result" class="result-area" aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>名字仅为创意参考，融合寓意 · 五行 · 声韵 · 古籍。愿宝宝健康喜乐 🌱</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
